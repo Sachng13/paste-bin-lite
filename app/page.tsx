@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [content, setContent] = useState("");
@@ -10,6 +10,18 @@ export default function Home() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(isMobile < 640);
+    };
+
+    checkScreen(); // run once on mount
+    window.addEventListener("resize", checkScreen);
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,8 +119,8 @@ export default function Home() {
               background: "linear-gradient(135deg, #84fab0, #8fd3f4)",
               borderRadius: "10px",
               display: "flex",
-              flexDirection: window.innerWidth < 640 ? "column" : "row",
-              alignItems: window.innerWidth < 640 ? "stretch" : "center",
+              flexDirection: isMobile < 640 ? "column" : "row",
+              alignItems: isMobile < 640 ? "stretch" : "center",
               gap: "12px",
               boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
             }}
@@ -189,7 +201,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: window.innerWidth < 640 ? "1fr" : "1fr 1fr",
+              gridTemplateColumns: isMobile < 640 ? "1fr" : "1fr 1fr",
               gap: "20px",
               marginBottom: "28px",
             }}
