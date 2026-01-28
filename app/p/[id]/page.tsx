@@ -123,7 +123,11 @@ export default async function PastePage({
               <strong>
                 {new Date(
                   paste.createdAt + paste.ttlSeconds * 1000,
-                ).toLocaleString()}
+                ).toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                })}
               </strong>
             </div>
           )}
