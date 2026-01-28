@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsMobile(isMobile < 640);
+      setIsMobile(window.innerWidth < 640);
     };
 
     checkScreen(); // run once on mount
@@ -119,8 +119,8 @@ export default function Home() {
               background: "linear-gradient(135deg, #84fab0, #8fd3f4)",
               borderRadius: "10px",
               display: "flex",
-              flexDirection: isMobile < 640 ? "column" : "row",
-              alignItems: isMobile < 640 ? "stretch" : "center",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: isMobile ? "stretch" : "center",
               gap: "12px",
               boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
             }}
@@ -201,7 +201,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: isMobile < 640 ? "1fr" : "1fr 1fr",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
               gap: "20px",
               marginBottom: "28px",
             }}
