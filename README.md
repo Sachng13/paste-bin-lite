@@ -1,4 +1,4 @@
-# Pastebin Lite
+# Pastebin Lite Live on -- https://paste-bin-lite-chi.vercel.app/
 
 A simple pastebin application that allows users to create text pastes and share them via URLs. Pastes can optionally expire after a certain time or number of views.
 
